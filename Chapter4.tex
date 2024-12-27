@@ -1,0 +1,50 @@
+\chapter{Measuring Sustainability of software}\label{chapter4}
+Measuring the sustainability of software is critical for proving the benefits and improvements that can be made by optimizing software and its development process as well as helping guide decisions made during the development on what to focus on. This chapter answers \textbf{RQ2: How to measure the sustainability of the software?} by introducing metrics, methods, and tools for measuring different aspects of sustainability. 
+
+\section{Metrics for Different Sustainability Aspects}\label{susmetrics}
+There are many metrics to determine the sustainability of software and its development. The metrics should aim to measure different parts of sustainability such as technical, economic, environmental, social, and individual. As mentioned in Section~\ref{scope}, individual and social sustainability measurements are often outside the scope of single projects and should be measured on an organizational level and are therefore mostly outside the scope of this thesis.
+
+\subsection{Technical Sustainability}
+The \gls{technicalsustainability} of software should be measured to ensure the software being produced allows fast iterations and efficient solutions so no unnecessary work needs to be done to introduce new features or change existing ones. Technically sustainable software can also be more performant which affects both economic and environmental sustainability. To achieve \gls{technicalsustainability}, defects in software should be measured. This is usually done with project management tools where defects can be added to the development backlog and labeled.
+
+In addition to defects, refactor opportunities should also be measured as they can tell if there is existing technical debt in the software being developed. Refactoring can be used to reduce technical debt and allow for faster iterations and feature additions.
+
+Another measurement for \gls{technicalsustainability} is story points in user stories. This is used in many agile implementations to indicate the work required for a specific story. If completed story points are decreasing every sprint, it can indicate that technical debt is accumulating and slowing down development.
+
+Crashes caused by unhandled errors should also be measured as they can indicate low stability of the software. Stability was one of the metrics identified in the Greensoft model in Section~\ref{greensoft}.
+
+\subsection{Economic Sustainability}
+For software to be sustainable, the costs of developing and using it should be measured. This is usually relatively easy when using hosting platforms or cloud service providers as they report the costs of running the software. In addition, the cost of the development team and tools used by them such as development tools and CI/CD pipeline usage costs should be measured to keep track of overall costs. These metrics include most of the lifecycle cost indicators presented in the green model for sustainable software engineering in Section~\ref{greenmodelforsustainable}. Cost of development was also mentioned as a relevant metric in the Greensoft model in Section~\ref{greensoft} as the "efficiency" metric.
+
+\subsection{Environmental Sustainability}
+As mentioned in Section~\ref{challenges}, the lack of tools is highlighted as one of the biggest challenges in measuring the energy consumption of software which presents challenges for measuring the \gls{environmentalsustainability}.
+
+Studies on measuring energy efficiency show that energy, performance, utilization, and economic, performance in relation to energy and pollution are used as metrics~\cite{slronmetrics}. Findings of Section~\ref{methods} support performance as a good heuristic for energy consumption. This applies to energy in relation to performance as well. This means that during development, benchmarks can be used to measure the \gls{environmentalsustainability} of specific features or code paths. In addition, benchmarks can catch regressions in software that affect \gls{environmentalsustainability} and by extension \gls{economicalsustainability}. Performance was also included as a key metric in the Greensoft model in Section~\ref{greensoft}.
+
+Resource utilization can reveal high network or disk (I/O) usage which can be mitigated with caching strategies and architectural improvements. High CPU usage can also be a good or a bad thing depending on the performance achieved. It can mean that the application is busy waiting instead of allowing other tasks to use the CPU time but it can also mean that the system resources are utilized well. Measuring resource utilization can therefore reveal good refactoring opportunities.
+
+Depending on the platform the software is running on, resource usage and energy consumption can be read directly from the operating system using APIs such as \gls{rapl} and reported as part of the telemetry and logs collected such as in native desktop or mobile applications. On servers, different tools can be installed to monitor and report energy consumption and resource usage. Cloud service providers also allow monitoring of resource usage and sometimes even metrics directly relevant to \gls{environmentalsustainability} such as CO2 emissions or energy usage.
+
+\section{Measurement Tools}\label{tools}
+There are many tools available for measuring different aspects of sustainability. Project management tools often allow measuring the number of items such as user stories, velocity of development by assigning story points to items, and costs relating to development. For \gls{environmentalsustainability} there exist tools for measuring resource usage and energy consumption for different hosting infrastructures.
+
+\subsection{Technical Sustainability}
+Defects and refactor opportunities can be measured with project management tools such as Kanban boards. Most kanban board tools allow labeling items or events separating them into different lanes or boards. These tools often also report the number of items on each label or board.
+
+\subsection{Economical Sustainability}
+Cost of development is often measured using work time tracking, project billing per hour or per month, and costs reported by development tools such as CI/CD pipeline and hosting costs. These should be collected and available to customers and the development team.
+
+\subsection{Environmental Sustainability}
+There are different tools for measuring software energy consumption. Measuring tools can be broadly separated into three different categories: Software tools, Hardware devices, and hybrid methods~\cite{8716456}. The software tools are generally not as accurate but they are more convenient and easily available as software is often run in cloud environments and having a physical testbench on premises is not always possible.
+
+\subsubsection{Software Tools}
+Software tools can be used to estimate the energy consumption of the system or processes based on available hardware sensors in different components of a computer and are as such limited to what sensors hardware offers. In addition to these methods, benchmarking software performance and resource usage can give some indication of its energy usage characteristics and can be used to detect changes in energy usage during the program lifecycle. Most software tools are based on \gls{rapl} API and \gls{msr}s. These have been proven to be accurate measurements of energy usage and therefore software tools based on them can be used to give at least a fairly accurate estimate of energy usage~\cite{shortcodepathrapl}\cite{raplinaction}. The overhead from RAPL is also negligible~\cite{raplinaction} and should not affect the measurements.
+
+Profiling and monitoring tools can be used to determine the energy consumption of processes. In some cases, profiling tools can introduce overhead which affects the overall performance of the program and can make them unsuitable for production usage~\cite{profilingenergyprofilers}\cite{calmenergyaccounting}. Some tools such as JoularJx can be used to measure the energy consumption of specific methods but might be limited in their programming language support~\cite{joularjx}.
+
+Monitoring tools such as PowerAPI~\cite{powerapi}, Schapandre~\cite{scaphandre}, PowerJoular~\cite{joularjx} and Green metrics tool~\cite{greenmetricstool} can be installed on the machine running the software such as on a server to continuously monitor the energy usage. Tools such as these do have their limitations, they might not work in virtualized environments unless the host has installed the software and exports metrics to virtualized guest systems. There are also many tools presented as an example in literature such as GreenTracker~\cite{greentracker} but finding working versions of these tools for general use is difficult.
+
+Some tools can analyze the website on a given URL and give it a score based on several factors relating to greenness and efficiency. These tools can be used to evaluate front-end web applications. These tools are by themselves not enough but can be used to indicate potential optimizations for front-end applications. Google's lighthouse is one such tool. These tools should be also integrated into CI/CD pipelines if they provide an API that allows developers to do so or are usable locally such as Lighthouse.
+
+\subsubsection{Hardware devices}
+Power meters can be used to directly measure how much energy a computer is using while running software. This method must take into account all different services and operating systems running on a computer and first form a baseline idle energy consumption that is used when comparing to energy usage while a program to be measured is running~\cite{studyoninfluence}. Hardware tools are not always feasible for software development organizations and therefore for the model proposed by this thesis, software-based tools are recommended.

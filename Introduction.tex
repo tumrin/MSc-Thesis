@@ -1,0 +1,53 @@
+\chapter{Introduction} \label{Introduction}
+ICT systems are estimated to use about 7\% of all energy produced globally and this is estimated to grow to 13\% by 2030~\cite{europaPressCorner}. Additionally, energy prices are becoming more volatile~\cite{ieaGlobalEnergy}. There are also many geopolitical tensions connected to semiconductor manufacturing and rare metals needed for modern computers. EU has also passed the \gls{csrd} and the \gls{issb} has also mandated that every company following the \gls{ifrs} must report emissions including those from ICT systems~\cite{ifrsIFRSISSB}. All of this has led to more interest in \gls{greensoftware} which in part aims to maximize the potential of hardware to run software faster, cheaper, and with less computing power and energy required and also have tools to measure the energy consumption of software accurately.
+
+The idea of \gls{greensoftware} development has been around for a long time. Some parts of \gls{technicalsustainability} such as technical debt and \gls{economicalsustainability} such as the cost of developing and running software are well-known factors in the software development industry. Recently the \gls{environmentalsustainability} has also seen more interest. There are studies from 2011~\cite{greensoft} presenting ideas on creating software more sustainably and as far back as 2001 for estimating the impact of ICT on the environment~\cite{ictimpact}. Despite this, the energy usage of ICT is growing and remains a concern~\cite{theimpactofinformationtechnology}. \Gls{greensoftware} often requires making code more efficient by optimizing it. Unfortunately, this has historically been seen as more difficult and expensive than just buying more hardware when scaling the software to more users. The problem of rising system requirements without apparent benefit for the software being used has been known for a long time and is often referred to as Wirth's Law~\cite{wirth}, which states that any advantages gained from faster hardware are negated by software becoming slower.
+
+\section{Challenges in Sustainable Software}\label{challenges}
+There are many open challenges in developing sustainable software. Lack of standard interfaces, metrics, configurations, and tools are often mentioned~\cite{Challenges}~\cite{empiricalstudyonpracticioners}~\cite{miningquestions}. There is also a general lack of awareness and knowledge on the topic of sustainable software among developers~\cite{softwareindustryawarness} and how to measure energy consumption~\cite{energyefficiencyanewconcern}. There is also relatively little research on sustainable software and how to apply it in practice as most of the existing research is very theoretical~\cite{Nurmivaara2023}. This can make it hard to create guidelines for developing sustainable software. This thesis aims to address some of these challenges by providing some guidelines, metrics, and implementations of different steps of existing development processes to facilitate more sustainable software development.
+
+\section{Goal}
+The goal of this thesis is to create a sustainable agile development process primarily for use at Kvanttori, a small-sized software development company. This means that the model mainly focuses on web development and primarily aims at team sizes of 2 to 10 people.
+
+\section{Research Questions}
+This thesis aims to integrate sustainable software development practices into an existing agile software development process to produce more sustainable software by answering the following research questions:
+\begin{itemize}
+    \item RQ1: What methods are there for developing sustainable software?
+    \item RQ2: How to measure the sustainability of the software?
+    \item RQ3: How to integrate sustainable development methods into an agile development process?
+\end{itemize}
+
+\section{Research Methods}
+A literature review is used to establish a clear understanding of the meaning of \gls{greensoftware} development and current agile development methods as well as documented methods for increasing and measuring the sustainability of software. A model for the agile development process is then created based on the findings of the literature review while also taking into account the current development model used at Kvanttori. The model should consider relevant methods for increasing software sustainability by reducing and measuring energy consumption and costs and by enhancing the technical aspects of software. In addition, expert interviews and existing criteria for sustainable agile processes are used to validate the usefulness of the proposed model.
+
+The following query was used both on ACM and IEEE databases to find sources for the literature review: 
+
+\begin{center}
+\begin{tabular}{ |>{\centering\arraybackslash}m{\textwidth}| } 
+\hline
+\textbf{Query}\\
+\hline
+Green OR Sustainable  OR "Energy usage" OR "Energy efficiency" OR “Energy consumption” OR “Power usage” OR “Power consumption”\\
+\hline
+AND\\
+\hline
+Software OR Coding OR Code OR Programming OR Pipeline OR CI/CD\\
+\hline
+ AND\\
+\hline
+Measuring OR Analyzing OR Estimating OR Predicting OR Ranking OR Agile OR Development OR Engineering\\
+\hline
+AND NOT\\
+\hline
+Android OR IOS OR Mobile OR Phone OR Embedded OR IoT OR Cryptocurrency OR Building\\
+\hline
+\end{tabular}
+\end{center}
+
+This query excludes mobile, embedded, and IoT research as energy consumption has been a key issue in these domains for many years already due to battery constraints and they are not necessarily applicable to reducing energy consumption in domains where constant power sources are available. However, some energy-saving patterns can be ported from these devices~\cite{energypatternsforweb}. These patterns can be found by the snowball search method from found sources. Buildings and cryptocurrencies were excluded as their energy consumption is irrelevant to this thesis. This query, when limited to titles, yielded 113 results on ACM and 213 results on IEEE Xplore. From these, the most relevant were chosen by manual selection. The selected literature was also used as a starting point for the snowball search method to find the sources for information present in the research papers. ACM and IEEE were chosen since they have the most research papers relating to \gls{greensoftware} development~\cite{softwareengineerginaspectsofgreen}.
+
+\section{Scope}\label{scope}
+The development of \gls{greensoftware} is a broad subject that considers many parts of the development processes and organizations using them as well as different aspects of sustainability such as technical, economic, environmental, social, and individual sustainability. This thesis focuses on the sustainability of the software itself and as such will only briefly mention indirect effects of software development such as working environment, developer travel, and communications methods. The thesis aims to find what makes software itself sustainable, how to measure it, and how those aspects can be included in an agile development process. The complete sustainability impact of the software often also depends on the software's use case. A smart thermostat system that regulates temperature automatically can save a lot of energy regardless of how much energy running the software consumes. The focus of this thesis, as mentioned previously, is on \gls{greeninit}, not \gls{greenbyit}. This thesis mainly focuses on the technical, economic, and environmental aspects of sustainability as those can be the most affected within a single software project. While the social and individual sustainability aspects are affected in parts of the proposed model, measuring their impact is difficult within the context of a single project and is therefore left outside the scope of this thesis. Using the proposed development model in a project is also outside the scope of this thesis.
+
+\section{Structure of the Thesis}
+This thesis is split into 8 chapters. Chapter~\ref{Introduction} provides an introduction of the subject, research questions, and limitations in the scope of the thesis. Chapter~\ref{chapter2} defines \gls{greensoftware} in the context of this thesis and gives insight into what can be done to make software more sustainable. Chapter~\ref{chapter3} examines current agile software development methods and how they take efficiency into account as well as some existing research on incorporating sustainability into the agile development process. Chapter~\ref{chapter4} focuses on measuring the sustainability of software. Chapter~\ref{chapter5} introduces an agile framework for sustainable software development. Chapter~\ref{chapter6} contains expert interviews and results of trying to validate the framework with criteria found in the literature. Chapter~\ref{discussion} contains the answers to the research questions, threads to the validity of this thesis, and presents further research topics. Finally, Chapter~\ref{conclusion} contains the conclusion of the thesis.

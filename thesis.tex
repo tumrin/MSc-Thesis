@@ -1,0 +1,81 @@
+% Document template suitable for use as a LaTeX master-file 
+% for thesis works in University of Turku Department of Computing
+%
+% Technical usage guide: https://tech.utugit.fi/soft/thesis/doc/doc/overview/
+% 
+
+\documentclass[language=english,version=draft,mainfont=none,sharelatex=false]{utuftthesis}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\usepackage{float}
+\usepackage[caption=false]{subfig}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{longtable}
+\usepackage[toc]{glossaries}
+\graphicspath{ {./images/} }
+
+% Define the algorithm environment
+%\makeatletter
+\providecommand\textquotedblplain{%
+  \bgroup\addfontfeatures{Mapping=}\char34\egroup}
+\providecommand{\tabularnewline}{\\}
+\floatstyle{ruled}
+\newfloat{algorithm}{tbp}{loa}
+\providecommand{\algorithmname}{Algoritmi}
+\floatname{algorithm}{\protect\algorithmname}
+%\makeatother
+
+\addbibresource{Bibliografia.bib}
+
+\makeglossaries
+
+\input{glossary}
+
+\begin{document}
+
+\pubyear{2024}
+\pubmonth{0}
+\pubtype{di}
+\title{Adapting Sustainable Software Development Methods Into Agile Processes}
+\author{Tuomas Rinne}
+
+\maketitle
+\include{abstract}
+
+% mandatory
+\tableofcontents
+
+% if you want a list of figures
+\listoffigures
+
+% if you want a list of tables
+\listoftables
+
+% if you want a list of acronyms
+\listofacronyms
+
+\printglossary
+
+% change the name if the default doesn't sound right
+\renewcommand{\algorithmname}{\listingscaption}
+
+% The thesis starts here.
+
+% TOC Plan
+
+\include{Introduction}
+\include{Chapter2}
+\include{Chapter3}
+\include{Chapter4}
+\include{Chapter5}
+\include{Chapter6}
+\include{Discussion}
+\include{Conclusion}
+% The thesis main content ends here.
+\printbibliography
+\include{original_quotes}
+
+\end{document}

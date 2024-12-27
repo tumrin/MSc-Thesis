@@ -1,0 +1,144 @@
+\chapter{What Affects Software Sustainability?}\label{chapter2}
+This chapter defines what is meant by sustainable software, what affects the sustainability of software, and why the sustainability of software is important. This chapter also answers \textbf{RQ1: What methods are there for developing sustainable software?} by listing methods for increasing the sustainability of software and its development.
+
+\section{Criteria for Sustainable Software}\label{criteria}
+One definition for \gls{greensoftware} is that it is software that has a minimally negative or even positive impact on the economy, society, and environment~\cite{modelforselected}. This takes into account the impact of all parts of the software lifecycle from the development process to the usage in a production environment to the eventual deprecation and replacement of the software. Another common definition for \gls{greensoftware} is software for which direct and indirect consumption of resources during different phases are monitored and optimized~\cite{sustainabledevelopmentsustainablesoftware}. For software to be sustainable, it should account for all different aspects of sustainability including \gls{technicalsustainability}, \gls{economicalsustainability}, \gls{environmentalsustainability}, \gls{socialsustainability} and \gls{individualsustainability}~\cite{Calero2015}.
+
+Determining when exactly software can be called sustainable as many parts affect the sustainability of software and there is yet to be a single label or certification for \gls{greensoftware} that is commonly recognized. There are some efforts to create such labels. One of these labels is the Blue Angel label in Germany which applies to software products among many other types of products. So far only one software has this label~\cite{blauerengelBlueAngel}. There is also the MitViDi-criteria for public sector ICT projects that categorizes projects into one of three different classes depending on their sustainability requirements~\cite{mitvidi} and the Responsibility criteria for public procurement for software services~\cite{kriteeripankkiSoftwareServices} which is partly based on the MitViDi-criteria. These criteria can be used to introduce features and patterns promoting sustainability into software products even if these criteria are not yet commonly used.
+
+\section{Methods for Developing Sustainable Software}\label{methods}
+The sustainability of software, or how much the development and usage of the software affect the different sustainability aspects, is determined by both factors relating directly to the software, its development, and effects from its usage and also indirectly from the organization and its members who develop the software, their habits, and processes. Performance, efficiency, maintainability, portability, usability, and reliability have been identified as the most relevant characteristics for energy efficiency of software with performance being the leading indicator~\cite{systemicliteraturereview}.
+
+Relevant energy efficiency characteristics also have an effect on the technical and economic aspects of sustainability as \gls{technicalsustainability} is directly affected by how maintainable the software is and \gls{economicalsustainability} is often affected by how much software costs to develop and run. Efficient software can run on less powerful and therefore less costly hardware. In services where usage is billed per hour, more performant software costs less to run. A core principle behind increasing the sustainability of software is to do less. This can manifest as doing less to achieve the same result, which is the case when using performant technologies and techniques such as caching, which allows using fewer CPU cycles to achieve the same result. It can also manifest as just doing less by not doing anything unnecessary. This can be achieved by requirements engineering and quickly dropping unnecessary features from the software.
+
+Compared to performance, memory usage has little correlation~\cite{PEREIRA2021102609}\cite{10.1145/3136014.3136031}\cite{10.1145/3125374.3125382} with energy consumption. Lower memory usage might allow running more applications on the same hardware or running applications in more constrained environments, which in itself can make the software more sustainable so it should still be considered when optimizing for efficiency. Optimizing memory, not for lower memory consumption but rather for better usage of it for caching, can reduce the work the CPU needs to do and lead to faster execution, which in turn saves energy by preventing unnecessary work on the CPU. It should also be noted that optimizing for speed and memory are not redundant with each other so both should be targets for optimization~\cite{studyoninfluenceofsoftware}.
+
+It should be noted that while performance has a strong correlation with energy efficiency, this is not always the case~\cite{towardsgreenranking}. For example, constantly running a CPU with maximum clock speeds is possible, theoretically resulting in the best performance but much worse energy consumption. However the correlation is strong enough that it can be used as a heuristic for efficiency~\cite{studyoninfluenceofsoftware}~\cite{energyefficiencyanewconcern}~\cite{twinsorfalseffriends}. As a general rule, the faster something runs, the less it does and by extension the less it consumes energy.
+
+\subsection{Architecture}\label{architecture}
+A well-thought-out architecture makes adding features more streamlined without the need to resort to workarounds that are sub-optimal from a performance standpoint. It also makes it easier for developers to follow good practices when implementing features. 
+
+\subsubsection{Caching and Bulk Requests}
+Software architecture can also be used to enhance performance by introducing cache systems and minimizing requests and database queries as these are always slower than querying in memory values. Generally, network and disk I/O traffic should be minimized. In addition, redoing work on the CPU should also be minimized.
+
+Caches can help prevent unnecessary work by allowing the memoization of return values of functions so that the function does not need to run again if its arguments do not change. Caches can also be used to save values from network or I/O operations so that data does not need to be fetched again every time it is needed. ~\cite{guidelines}
+
+Queries to resources over the network or on disk should be done in bulk when possible to get as much done in a single query as possible~\cite{guidelines}. This can make the application more performant and also lower costs in case used services for hosting are billed based on usage. Most databases have a way to do bulk requests or combine data from multiple tables with a single request.
+
+\subsubsection{Data Structures and Algorithms}
+Used data structures and algorithms can also have a great impact on energy consumption. Studies done with Java point to correct data structures having up to 11\% improvements in energy consumption~\cite{influenceofjava}. Another study showed that picking incorrect data structures can raise energy usage by over 300\% while optimizing can lower it by as much as 38\%~\cite{energyprofilesofjavacollections}. Algorithms and data structures should be optimized for speed rather than memory usage because the correlation between performance and energy consumption is much higher than the correlation between memory usage and energy consumption. Therefore data structures and algorithms with lower time complexity should be preferred.
+
+\subsubsection{Error Handling}
+ Error handling is also an important part of the architecture. Restarting a crashing application on errors will generally use more energy than handling errors gracefully. Error handling is also important for the maintainability of the software as handling errors in the same way and maybe even in the same place in code makes ensuring all errors are handled easier.
+ 
+ \subsubsection{Logging}\label{logs}
+ Not everything should be logged in running software. Unnecessary logs can cause performance slowdowns and unnecessary data transfer and storage. They can also make it more difficult to find relevant logs for specific issues.
+ 
+ \subsubsection{Offloading}
+ It can also be beneficial to offload heavy processing to a server in applications using a client-server architecture instead of running them on the client side~\cite{energyefficiencyanewconcern}. This can also help extend the lifespan of client devices as applications can have lower system requirements and do not require replacing client devices with more powerful ones to use the software.
+ 
+ \subsubsection{Indexing}
+ When planning the database architecture of the software, deciding what fields should be indexed for fast retrieval is important. This can significantly boost the performance of a database with the cost of some memory usage which should reduce the energy used by the database queries using indexed fields.
+
+\subsection{Technology Choices}\label{technology}
+Technology choices such as programming language, framework, and database systems can drastically affect energy consumption.
+
+\subsubsection{Programming Language}
+ Lower level and compiled languages tend to be much faster and more efficient, often in orders of magnitude, than interpreted languages~\cite{PEREIRA2021102609}\cite{10.1145/3136014.3136031}\cite{10.1145/3125374.3125382}. They also often result in smaller sizes for the software.
+
+The choice of programming language affects more than just the performance. Languages with strong and static type systems can help prevent many issues that are typical to dynamically typed languages such as unexpected values. Some languages are also null safe, opting to use "Optional"-types instead, which can prevent unexpected crashes and other issues. Similarly, some languages handle errors as values instead of exceptions which makes it easier to ensure all error cases are handled. All of these attributes can greatly improve the \gls{technicalsustainability} of the software.
+
+\subsubsection{Runtime}\label{runtime}
+In interpreted languages the choice of the runtime can impact the performance for example when comparing the following production-ready JavaScript runtimes: Node, Deno, and Bun, there are great differences in their performance with Bun generally being the fastest and most energy efficient~\cite{snykNodejsDeno}~\cite{bunvsnodevsdeno}.
+
+\subsubsection{Database}
+ Some database systems such as relational databases like PostgreSQL can be drastically faster than document-oriented databases such as MongoDB~\cite{mongodbpostgresql}. Some databases also enforce much stricter typing of items put in them. Using these kinds of databases helps keep software maintainable by helping prevent mistakes caused by incorrect types.
+ 
+\subsubsection{Libraries and Frameworks}
+Even different libraries and frameworks can have drastic differences in speed despite using the same language~\cite{investigatingtheimpactofweb}. Newer and actively maintained frameworks tend to be faster as they leverage newer language features internally and have less technical debt which can be seen when comparing three Javascript web frameworks which are Express, Fastify, and Hono~\cite{webframeworksbenchmarkFrameworksBenchmark}. Express being much older is also slower than the other two.
+
+\subsubsection{Large Language Models}\label{llm}
+LLMs can use a lot of energy both when training and using them. Usage of these technologies should be carefully considered as they can also add a lot of complexity to the software. If these technologies are used, their impact should be mitigated. Using smaller, local models can reduce energy usage while also being faster and cheaper to run~\cite{greensoftwareGreenSoftware}.
+
+\subsection{Size of Data}
+The size of data directly affects the energy usage and performance when moving data via network or disk I/O. Therefore optimal datatypes should be used when moving files. Compression should also be used to minimize the size of data in transit and at rest~\cite{greensoftwareGreenSoftware}. Many backend services use JSON to move data but more efficient formats such as protocol buffers or CSV can be used to decrease the size of data~\cite{guidelines}. The used data format also depends on the complexity of the data as CSVs for example cannot be used to represent nested data.
+
+File format is especially relevant in images as they are often large and can form a significant part of the data moved over the network in cases such as front-end applications. Newer formats such as WEBP and AVIF are much more space-efficient compared to formats such as JPEG and PNG and should therefore be used if possible. The image resolution is also an important factor. Images should be appropriately sized for their use case.
+
+The size of the entire software is also an important factor when distributing it. Smaller software and updates use less energy when transferred over the network and are also faster to download. In some specific cases such as applications running on browsers, the size can be even more important than performance due to the software being fetched from the server every time it is used.
+
+Data size should also be optimized when storing data. Using efficient formats and only storing what is needed can reduce the need for additional storage hardware~\cite{greensoftwareGreenSoftware}.
+
+\subsection{Development Tools}
+There are many tools that can be used during development to improve the sustainability of the software being developed. Automated testing and releasing can improve the quality of the software but they also affect the energy consumption of the development process.
+Factors such as how often tools are run can cause unnecessary energy consumption during development. Furthermore, different testing and build systems can be drastically more efficient even within the same language ecosystem.
+
+The energy consumed by development tools and tests can be affected by the efficiency of the software being built. Quality of implementation and chosen technologies will affect how long it takes for parts of the software and by extension tests to run. The required resources by testing environments also depend on the resource usage of the software. This will affect the cost of the testing environment and CI/CD pipelines.
+
+Any tools used during the development are likely to increase the energy consumption of the development process. Software is often used much longer than it is developed. Therefore it makes sense to optimize the efficiency in the usage of the software even if the development consumes more energy as a result.
+
+\subsubsection{Tests}
+Tests can be used to maintain the technical quality of the software and catch issues early to prevent them from going into the production build of the software. Testing should be used to ensure that the software functions correctly.
+
+Running unnecessary tests can decrease the sustainability of the development process by consuming more energy and costing more. Therefore only necessary tests should be run. The types of tests often depend on the project and therefore no general recommendation can be given on the types of tests.
+
+\subsubsection{Benchmarks}
+Benchmarks can be used to measure the performance of the software and should be used to ensure the software is fast and that there are no performance regressions in features.
+
+At least the most used code paths should be benchmarked in addition to any performance-sensitive sections of the software.
+
+\subsubsection{Formatters}
+Formatters help keep the code consistent and easy to read. This helps improve maintainability as all code is at least mostly similar in every part of the software code.
+
+Formatters should also be integrated into developers' editors to prevent developers from pushing unformatted code and causing CI/CD pipelines to re-run unnecessarily after failing on formatting issues.
+
+\subsubsection{Linters}
+Linters and other static analysis tools can catch issues during development resulting in a more sustainable final product but will likely increase the energy consumption of the development environment and CI/CD pipelines. Linters can also often be integrated directly into the code editors which can help catch issues early and prevent unnecessary CI/CD runs caused by these issues.
+
+\subsubsection{Build Tools}
+There are also other tools that can be integrated into the build process to enhance sustainability. Such tools include minifiers that allow optimizing the size of some static assets such as images. These tools allow automating image format conversions to more efficient formats which in turn reduces network traffic during the usage of the software.
+
+\gls{pgo} is another build tool that allows collecting data from software and feeding it to the compiler during the build process to further optimize the software.
+
+\subsection{Hosting}\label{hosting}
+The devices running the software also have a significant impact on the sustainability of the software. In servers, the energy efficiency of the hardware used to run the software, virtualization, and things such as if the software is running all the time or started only when requests are made to it affect the energy usage and often the costs too. Virtualization allows fully utilizing hardware by splitting physical hardware into many virtual computers which allows maximizing the hardware use. There is also research in utilizing virtual machines to scale the number of servers that virtual machines run on depending on the load to optimize energy usage~\cite{virtualmachines}. 
+
+Using serverless functions for some tasks can also save energy as they allow using hardware only when needed. However, research is conflicted on this as some research suggests serverless functions can increase the overall energy consumption by up to 15 times~\cite{serverless} while others suggest serverless platforms using up to 58\% less energy~\cite{serverless2}. These results indicate that the implementation of the serverless model is important and should be factored in when deciding to use serverless platforms.
+
+When choosing a platform for hosting an application, the measurements provided by the hosting provider should be considered. Some services offer much more detailed metrics on resource and energy usage than others. Different hosting services also offer different services at different prices which affects the economical sustainability. They also have varying levels of support for different technologies in hosting platforms. 
+
+The source of the energy used by hosting providers should also be considered. Green Web Foundation keeps a database of hosting providers that mainly use green energy to run their platforms~\cite{greenwebGreenFoundation}. It should also be noted that there are other factors such as the usage of heat from cooling and usage of water in hosting providers. This should also be considered if such information is available when making decisions about hosting services. 
+
+Distance is also an important factor when discussing hosting providers. Applications should use servers that are as close to users as possible to minimize the distance data needs to travel as this also lowers the energy consumption and sometimes even the costs of running the software~\cite{greensoftwareGreenSoftware}.
+
+Another important factor in hosting is the choice of hardware. Some providers allow running software on different CPUs, some of which might be more energy efficient~\cite{greensoftwareGreenSoftware}. The efficiency of the hardware is affected by how new it is and what architecture it uses.
+
+\subsection{Configuration}\label{configuration}
+Configuration used when building or bundling the software can also have drastic runtime performance impact~\cite{twinsorfalseffriends}. Optimization levels in some compilers for languages such as C and Rust can be used to optimize for speed or size and the difference between the lowest and highest optimization level can be great. In addition, optimizing for certain architecture levels to leverage instructions found in newer processors~\cite{phoronixBenchmarkingExperimental}. Therefore the target hardware should be taken into account when possible. Default configurations are often aimed at making the software work equally well on all supported platforms so it might make sense to change the configurations to optimize the build process to project specific target platforms.
+
+Some web frameworks might use client-side rendering by default, or render pages every time on request if server-side rendering is enabled. These can often be configured to render specific pages that are not expected to change at build time and serve them to request preventing unnecessary rebuilding of pages on every request~\cite{greensoftwareGreenSoftware}.
+
+\subsection{User Interfaces}
+User interface and user experience design can also affect energy consumption. All functionality should require as few actions from the user as possible as this leads to less code being run and therefore saves energy and resources. This includes making the software accessible for accessibility tools. In addition, there should be easy ways to handle error situations and undo actions by the user. UI energy usage can also be reduced by using darker colors if client devices are expected to have OLED displays, which is often the case with smart TVs and smartphones, and by reducing the amount of animations and moving elements~\cite{energypatternsforweb}.
+
+Optimizing for energy efficiency may require making trade-offs in user interfaces as animations and other decorative features can often increase energy consumption. These features might make the software stand out from the competition and can be important from a marketing perspective. The purpose of the software should be considered when designing the user interface. Simpler user interfaces should be preferred if it is not important to have one that stands out. In use cases where the user interface should stand out, elements with high energy consumption should be used sparingly to save energy while still being effective for their purpose. The effects of expensive visuals can also be mitigated by using smaller file formats and more efficient technologies.
+
+\subsection{User Actions}
+There is also some benefit in allowing users to disable features they do not need to save energy~\cite{energypatternsforweb}~\cite{mitvidi}. This could be for example allowing users to choose how many charts they want to see in an application showing different devices' power consumption. This would affect how many devices need to be fetched and how many charts need to be drawn.
+
+Users can be incentivized to change their usage patterns by displaying relevant energy consumption metrics in the application. The users should also see actionable tips on how to improve the energy consumption of the application by changing their usage patterns in addition to showing them metrics~\cite{impactofgreenfeedback}.
+
+\section{Motivation for Sustainable Software}
+The benefits of developing sustainable software are not limited to the reduction of environmental impacts only. Sustainable software can help reduce the running costs of software and improve user experience. This section covers reasons for creating sustainable software in addition to the environmental aspects.
+
+\subsection{Costs}
+More efficient software means that less hardware is required to perform some work. This means that hardware can remain in use longer and there is no reason to immediately buy new hardware as the amount of users grows. Many cloud services bill users based on usage especially when using serverless functions but often also with shared virtual cores. The faster the software is, the less time it is used. This leads to lower costs over time. In self-hosted setups, more efficient software means lower electricity bills and longer life for the hardware.
+
+\subsection{User Experience}
+Sustainable software also means a smoother experience for the end user. Sustainable software is usually faster which means that end user spends less time waiting for software to perform certain tasks. Users also appreciate software that does not use unnecessary resources on their devices. On mobile heavy resource usage has been linked to lower reviews of the application~\cite{mobilecomplaints}. Sustainable software should also be easier to use as reducing actions user needs to make can also reduce energy consumption.
+
+\subsection{Environment}
+Sustainable software helps the environment by requiring less hardware allowing it to remain in use longer and reducing the energy needed to run software. Electronic waste is one of the fastest growing waste categories and recycling it is not without its problems~\cite{whoElectronicWaste}. In addition, energy prices can be volatile which can cause large cost spikes in resource-intensive applications.
+
+\subsection{Legislation}
+IT infrastructure emissions reporting is starting to appear in such as in the \gls{csrd}. Reporting emissions requires software to be measurable. There is currently no standard way of measuring emissions from software products but being able to at least estimate energy consumption is a step in the right direction.

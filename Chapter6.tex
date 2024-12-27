@@ -1,0 +1,303 @@
+\chapter{Validating the framework}\label{chapter6}
+This chapter explains how the proposed model is validated. The methods chosen for this thesis are criteria for green agile processes presented in literature and expert interviews. These methods are used to establish the feasibility of the model in an actual software development project.
+
+\section{Research on Evaluating Sustainable Software Development}\label{criteriaeval}
+Existing research on criteria for sustainable software engineering processes was used to extract the criteria from different criteria models and the proposed model was then compared to these criteria to determine how well it fulfills them.
+
+\subsection{Green Agile Maturity Model}
+Green Agile Maturity Model by Rashid, Khan, Khan, and Ilyas~\cite{greenagilematurity} lists risk and success factors for green software development processes.  Furthermore, it defines seven green agile maturity levels for the development processes. This model was developed to evaluate software vendors' agile development models from the perspective of sustainable software development.
+
+\subsubsection{Risk Factors}
+The risk factors and if they have been mitigated in the proposed model are listed in Figure~\ref{riskfactors}.
+
+\begin{longtable}{ |l|c| }
+\hline
+\textbf{Risk factors} & \textbf{Mitigated}\\
+\hline
+Insufficient system documentation & Yes\\
+\hline
+Limited support for real-time systems and large systems & Yes \\
+\hline
+Management overhead & Yes\\
+\hline
+Lack of customer's presence & Yes\\
+\hline
+Lack of formal communication & Yes\\
+\hline
+Limited support for reusability & Yes\\
+\hline
+Insufficient knowledge of the customer & Yes\\
+\hline
+Lack of long-term planning & Yes\\
+\hline
+\caption{Risk factors for sustainable software~\cite{greenagilematurity} and if proposed model mitigates them.}
+\label{riskfactors}
+\end{longtable}
+
+\textbf{The insufficient system documentation} is mitigated by having the roadmap, architectural plan, and end-of-life documents that are kept up to date during the development process.
+
+\textbf{Limited support for real-time systems and large systems} is mitigated as the model does not pose such limitations. In addition, the \gls{technicalsustainability} aspects of the model are helpful when the system's size and complexity increase.
+
+\textbf{Management overhead} is mitigated by using scrum as a basis for the model. The development team is responsible for the project and creating value for the customer.
+
+\textbf{Lack of customer presence} is mitigated by allowing customers access to all information of the development process as well as having them take part in sprint reviews. Customers and the development team also constantly communicate throughout the iteration.
+
+\textbf{Lack of formal communication} is mitigated by available communication tools and stakeholders having to attend at least the sprint review sessions.
+
+\textbf{Limited support for reusability} is mitigated by the reuse step of the post-development phase.
+
+\textbf{Insufficient knowledge of the customer} is mitigated by constant communication as well as the roadmap planning where the customer's business case is presented to the development team and the key features are decided.
+
+\textbf{Lack of long-term planning} is mitigated by the roadmap planning as well as the end-of-life plan done for the project. Additionally, architectural planning takes into account the scaling of the software for future features and users.
+
+\subsubsection{Success factors}
+ The success factors and if they appear in the proposed model and if they are included in the proposed model are listed in Figure~\ref{succesfactors}.
+\begin{longtable}{ |l|c| }
+\hline
+\textbf{Success factors} & \textbf{Included}\\
+\hline
+Accelerated delivery & Yes\\
+\hline
+Continuous integration & Yes\\
+\hline
+Continuous validation & Yes\\
+\hline
+Efficient utilization of time and computing resources & Yes\\
+\hline
+E-waste minimization & Yes\\
+\hline
+Flexibility towards change & Yes\\
+\hline
+Green and sustainable management of product lifecycle & Yes\\
+\hline
+Improved quality & Yes\\
+\hline
+Iterative development & Yes\\
+\hline
+Minimal documentation & Unclear\\
+\hline
+Minimal reengineering & No\\
+\hline
+Optimization of processes & Yes\\
+\hline
+Optimized code & Yes\\
+\hline
+Polymorphic design & Unclear\\
+\hline
+Reduced cost & Yes\\
+\hline
+Rich communication and collaboration & Yes\\
+\hline
+\caption{Success factors for sustainable software~\cite{greenagilematurity} and if proposed model includes them.}
+\label{succesfactors}
+\end{longtable}
+
+\textbf{Accelerated delivery} is included in the form of the models underlying scrum processes and delivery following and estimation using the story point system. The model also encourages preventing the accumulation of technical debt that would eventually slow down development speed.
+
+\textbf{Continuous integration} is a core part of the model but the release cycle can depend on what part of its lifecycle software is in and on the teams and stakeholder preferences. Releases can be done once a sprint, multiple times per sprint, or after reaching some feature milestones.
+
+\textbf{Continuous validation} is done via running tests, linters, and other tools to improve the software quality and find issues. Users also have access to the software so it can be tested manually.
+
+The model aims to create more performant software by utilizing many different kinds of tools and architectural patterns so it should have \textbf{efficient utilization of time and computing resources}.
+
+The model \textbf{minimizes e-waste} by producing more performant software allowing the same hardware to be used for more users or in the case of client applications allowing lower-powered hardware to run the application. The hardware reuse step also reduces e-waste by aiming to reuse hardware kits used for development in the future.
+
+\textbf{Flexibility towards change} is included in the form of open communication with stakeholders and iterative development, allowing the features to be added and dropped even on short notice.
+
+\textbf{Lifecycle of the software} is taken into account in different phases of the model.
+
+The model uses automated tools such as linter and tests as well as manual code reviews to maintain and \textbf{improve the quality of the software}.
+
+The model specifies sprints as \textbf{iterations} but does not determine their length as it depends on the project.
+
+The model does not have specifications on \textbf{minimal documentation}. It only requires a roadmap, architectural plan, and end-of-life plan. The model should not produce unnecessary documentation.
+
+\textbf{Minimal reengineering} is not included. The model encourages refactoring to improve efficiency and reduce technical debt.
+
+\textbf{Optimization of processes} is included as every sprint includes a retro where the sprint is assessed by the team and processes that do not contribute value are changed or removed.
+
+\textbf{Polymorphic design} is not included as the model does not specify design patterns that should be used.
+
+Multiple parts of the model aim to \textbf{reduce the costs} of stakeholders both from the development process and running the software.
+
+The model states that stakeholders should be represented in the review sessions, have access to information in all parts of the model, and have a way to constantly \textbf{communicate with the team}.
+
+The model should score well in GAMM~\cite{greenagilematurity} as it includes mitigations for most of the risk factors and includes most of the success factors. 13 out of 16 success factors are included and 8 out of 9 risk factors are mitigated.
+
+\subsection{Assessment criteria for sustainable software engineering processes}
+Exploring Assessment Criteria for Sustainable Software Engineering Processes by Wahler, Seyff, and Ramirez~\cite{assesmentcriteriaforsustainable} presents assessment criteria for sustainable software engineering processes. This criteria was developed for a software development industry partner for assessing their development process. The criteria for sustainable software and if they are included in the proposed model are presented in Table~\ref{criteriaforsustainable}.
+
+\begin{longtable}{ |l|c| }
+\hline
+\textbf{Criteria} & \textbf{Included}\\
+\hline
+Multidisciplinarity of the Development Team & Yes\\
+\hline
+Software Engineering Best Practices & Yes\\
+\hline
+Capacity for Technical Debt Reduction & Yes\\
+\hline
+Sustainable Collaboration Setup & No \\
+\hline
+Sustainable Team Culture & No\\
+\hline
+Ability to Handle Changing Requirements & Yes\\
+\hline
+Code Maintainability & Yes\\
+\hline
+Strong Feedback Loops & Yes\\
+\hline
+Willingness to Change the Process & Yes\\
+\hline
+Transparency of Communication & Yes \\
+\hline
+Automatic Quality Checks & Yes\\
+\hline
+Business Continuity of the Development Environment & Partially\\
+\hline
+Willingness to Change Requirements & Yes\\
+\hline
+Implementation of Resource-Intensive Operations & Yes\\
+\hline
+Sustainable Test Management & Yes\\
+\hline
+Continuous Sustainability Improvement & Yes\\
+\hline
+Participation of the Team & Yes\\
+\hline
+Sustainability in Different Process Phases & Yes\\
+\hline
+Sustainable Design Decisions & No\\
+\hline
+Sustainability Reporting & Yes\\
+\hline
+Implications of Software Operations & Partially\\
+\hline
+Sustainability Awareness & Partially\\
+\hline
+Value of Sustainability & No\\
+\hline
+Availability of Metrics & Yes\\
+\hline
+Sustainable Procurement and Governance & No\\
+\hline
+Knowledge about Sustainability & Partially\\
+\hline
+Development for Efficient Execution & Yes\\
+\hline
+Sustainability in Release Planning & No\\
+\hline
+Sustainable Data Structures & Yes\\
+\hline
+Sustainability Incentive & No\\
+\hline
+Sustainability Quality Attributes & No\\
+\hline
+Usage of tools to assess sustainability & Yes\\
+\hline
+Energy Consumption of the Development Process & No\\
+\hline
+Different Sustainability Dimensions & Yes\\
+\hline
+Consideration of Different Orders of Effects & No\\
+\hline
+Direction and Policies to Improve Sustainability & Yes\\
+\hline
+Sustainable Infrastructure & Yes\\
+\hline
+Technologies for System Development & Yes\\
+\hline
+\caption{Criteria for sustainable software~\cite{assesmentcriteriaforsustainable} and what criteria the proposed model implements }
+\label{criteriaforsustainable}
+\end{longtable}
+
+\subsubsection{Implemented}
+\textbf{The multidisciplinarity of development team} is accounted for in the model as required roles for the development team. \textbf{The engineering best practices} are accounted for mainly in the pre-development phase using development tools and integrating them to CI/CD pipelines which also implements \textbf{Automatic quality checks}. This also allows implementing \textbf{Code maintainability} which is further implemented by enforcing code reviews in addition to automatic checks. The model also enforces allocating development work to defects and refactors from separate backlogs to improve maintainability which also allows for \textbf{Capacity for technical debt reduction}. 
+
+\textbf{The ability to handle changing requirements} is implemented as the process is based on agile principles and works in iterations allowing fast reaction to changes. Similarly, the \textbf{willingness to change requirements} is implemented. \textbf{Strong feedback loop is implemented} by collecting user feedback from the running app and by requiring key stakeholder presence in iteration reviews.
+
+\textbf{Willingness to change the process} is implemented as during the sprint retro the development team will discuss what worked and what did not. These discussions might lead the team to drop some parts of the process model that do not produce any value. In the post-development phase, a larger post-mortem is conducted to inspect the project as a whole and collect findings that can be used in subsequent projects. This might also include adding, dropping, or changing parts of the model to fit the team better.
+
+\textbf{Transparency of communication} is implemented by allowing all relevant stakeholders to access the information about the project. \textbf{Implementation of Resource-Intensive Operations} is included as the model includes many monitoring tools in the usage environment as well as benchmarks to find specific intensive code paths. \textbf{Sustainable Test Management} is implemented as optimizing CI/CD pipelines to run in under 10 minutes and by setting the pipelines up in such a way that tests are not run if not necessary such as with documentation changes.
+
+\textbf{Continuous Sustainability Improvement} is implemented by monitoring usage and running benchmarks to find issues with performance, energy consumption, or resource usage and adding these issues to refactor or defect backlogs so they can be fixed. \textbf{Participation of the Team} is implemented as teams are responsible for implementing the model in their projects in ways that work for them. \textbf{Sustainability in Different Process Phases} is implemented as the model is split into four different phases with each having different methods for increasing sustainability.
+
+\textbf{Sustainability Reporting} is implemented as the model includes many metrics related to different aspects of sustainability, all of which are available to stakeholders. These metrics also allow implementation of \textbf{Availability of Metrics} and \textbf{Usage of tools to assess sustainability}. \textbf{Development for Efficient Execution} is implemented as multiple phases of the model are aimed at optimizing execution efficiency. \textbf{Sustainable Data Structures} is implemented in the architecture planning phase.
+
+\textbf{Different Sustainability Dimensions} are taken into account in the model. \textbf{Technologies for System Development} is implemented as performance and maintainability are considerations in technology evaluation.
+
+\subsubsection{Partially Implemented}
+\textbf{The business continuity of the development environment} is partially implemented as the software should be easily changeable based on changing needs. The model also has an end-of-life plan for migrating to new software if necessary. The model however does not use the ability to adapt technologies for new platforms as criteria in technology evaluation. The model considers only the target platforms defined at the start of the project as configuring for those platforms allows for greater efficiency.
+
+\textbf{Sustainability Awareness} is partially implemented as the stakeholders have access to all metrics but they are not required to actively follow them. \textbf{Knowledge about Sustainability} is partially implemented as the development team roles require some knowledge of sustainability practices. This is not required from all stakeholders. \textbf{Direction and Policies to Improve Sustainability} is implemented as the development takes into account regulation and stakeholder needs.
+
+\textbf{Sustainable Infrastructure} is included as the technology evaluation uses the sustainability of infrastructure as a criterion. \textbf{Implications of Software Operations} is partially implemented as the model enforces collecting metrics from different phases but does not require measuring all sustainability aspects in every phase.
+
+\subsubsection{Not implemented}
+The model does not take \textbf{sustainable collaboration setup} into account as it does not enforce a specific way of collaborating within the team. Similarly, the model does not say anything about \textbf{sustainable team culture}.
+
+\textbf{Sustainable Design Decisions} is not implemented as the model does not require explicitly documenting the estimated sustainability impact of all design decisions. \textbf{Value of Sustainability}, \textbf{Sustainable Procurement and Governance} and \textbf{Sustainability Incentive} are not included as implementing them is beyond the scope of single development projects.
+
+\textbf{Sustainability in Release Planning} is not implemented as the model makes no specific mention of the release schedule. \textbf{Sustainability Quality Attributes} is not implemented as the requirements are based on stakeholder needs and while the model aims to produce sustainable software, this does not need to be specified in requirements. \textbf{Energy Consumption of the Development Process} is not implemented as there are no tools for reliably measuring the entire development process energy consumption. \textbf{Consideration of Different Orders of Effects} are only partially implemented as the model only accounts for first-order effects.
+
+\subsubsection{Scoring the model}
+The model fully fulfills 24 of 39 criteria and 4 out of 39 partially. 3 out of 39 are out of scope for single projects leaving 8 unfulfilled criteria out of 39. This shows there is some room for improvement for the model but implementing all the phases without making the model too heavy to use can be challenging.
+
+\section{Expert interviews}\label{expertinterviews}
+The expert interviews were conducted to validate the model against the experiences of developers from different organizations that are interested in green and energy-efficient software.
+
+\subsection{Interview process}
+ The model for the interviews is semi-structured. The interview audio was recorded and transcribed with OpenAI whisper model~\cite{whisper} running locally. The transcription was coded and analyzed with QualCoder~\cite{qualcoder}. Coding was then used to quantify feelings towards the model, either positive or negative, and additions or removals from the model.
+
+The following questions are asked during the interview but not necessarily in the same order:
+
+\begin{enumerate}
+    \item What is missing from the model if anything?
+    \item What would you remove from the model if anything?
+    \item Are the metrics proposed in the model effective?
+    \item Are the roles in the model useful?
+    \item Do you think the model is overall effective in increasing sustainability?
+    \item Would you use this model in a project? Why or why not?
+\end{enumerate}
+    
+A thematic analysis was performed for the interviews to find out the effectiveness of the model regarding sustainability, the heaviness of the model, sentiment on the usefulness of the metrics and roles in the model, possible challenges with using the model, and interest in using the model. The interview transcripts were coded with the following codes: Additions / Removal of phases, Negative / Positive on metrics, Negative / Positive on roles, Negative / Positive on usage, Negative / Positive on usefulness, and finally Usage notes to identify what needs to be taken into account when using the model.
+
+Most of the interviews were conducted in Finnish. The quotes from interviews are translated into English and shortened to illustrate the results of the analysis. Original quotes in Finnish are listed in Appendix~\ref{appendixa}.
+
+\subsection{Interview analysis}
+The amount of additions was overall high with 3 to 5 additions per interview which might indicate something is missing from the model. Upon further analysis most additions were clarifications and additions to existing phases and are therefore not indicative of the model missing any crucial phases but rather that some parts of the model need further refinement. 
+
+\subsubsection{Additions}
+One interviewee noted that \gls{embeddedemissions} is not taken into account in the model. This can affect the overall sustainability as, depending on the platform, \gls{embeddedemissions} can account for almost half of the emissions. This can affect whether the software should be optimized to work on the same devices for as long as possible. \textit{"At some point when newer hardware is more energy efficient, it makes sense to take the \gls{embeddedemissions} hit"}~\hyperref[i14]{[Appendix 1.4]}.
+
+Many interviewees also noted the lack of granular measurements for energy consumption in the model and mapping energy consumption to specific parts of the code. \textit{"Like currently, you can trace single user request through the full stack of the application, you could do the same with the energy used by that single user request"}~\hyperref[i33]{[Appendix 3.3]}. \textit{"So there is currently no tool for following so-called energy hotspots?"}~\hyperref[i43]{[Appendix 4.3]}. This can present challenges due to tooling around granular measurements still being lackluster at best as interviewee 1 noted: \textit{"400 papers about measurements and not one of them was universal in the end"}~\hyperref[i16]{[Appendix 1.6]}.
+
+Two of the interviewees also noted the lack of social and individual sustainability aspects in the metrics. \textit{"There are five of these sustainability aspects and here there are three and the velocity"}~\hyperref[i17]{[Appendix 1.7]}. \textit{"Yes, I don't know, I think that maybe that social aspect. Could something be added to that?"}~\hyperref[i23]{[Appendix 2.3]}.
+
+\subsubsection{Removals}
+None of the interviews indicated a desire to remove anything from the model. \textit{"...That I would not remove anything and I don't see anything that would be unnecessary in this."}~\hyperref[i41]{[Appendix 4.1]}. This together with a high amount of positive responses on the usefulness of the model, which there were 2 to 6 per interview, indicates that according to the interviewees, the phases proposed by the model could be effective in increasing the sustainability of the software being developed. There were also no instances of negative comments relating to the usefulness of the model.
+
+\subsubsection{Metrics}
+Responses on metrics were inconclusive but more critical as there were 1 to 2 positive comments on metrics and 0 to 5 negative comments on metrics per interview. Negative comments regarding metrics focused on pointing out their simplicity and half of the interviewees desired more complex metrics that combine the proposed metrics, which were useful as the positive comments pointed out, such as measuring the ratio of different backlogs instead of their sizes or combining cost information with sprint velocity or work time. \textit{"So how we can make these into second-level metrics so that there is division and multiplication with something that we can use to compare these between software projects."}~\hyperref[i12]{[Appendix 1.2]}.
+
+\subsubsection{Roles}
+Roles were also inconclusive with them mainly being seen as useful and there were some comments regarding the usefulness of some roles such as the scrum master. \textit{"That Scrum master...I'm not necessarily sure why it is needed."}~\hyperref[i34]{[Appendix 3.4]}. The introduction of the tech lead role was seen as positive. \textit{"We have had the tech lead role for a long time"}~\hyperref[i11]{[Appendix 1.1]}. \textit{"As sustainable development is not necessarily a widespread skill, having someone who knows these things can be beneficial"}~\hyperref[i22]{[Appendix 2.2]}. Interviewee 1 noted that organizations could have green coding experts that don't necessarily work full time in the development team but are available for consulting in specific scenarios: \textit{"It could have like a green coding expert that will be used when necessary so that the team does not have to know everything"}~\hyperref[i13]{[Appendix 1.3]}.
+
+\subsubsection{Phases and Steps}
+The phases and steps in the model were seen as useful. \textit{"On paper, this should produce more sustainable software if followed completely"}~\hyperref[i24]{[Appendix 2.4]}. Introduction of energy measurement was also seen as especially useful: \textit{"If we can get the energy consumption data, that is something that is not probably used anywhere because there has been no way to get it. That is something new."}~\hyperref[i31]{[Appendix 3.1]}. Architecture and technology evaluation were also seen as useful. \textit{"What was great about it was that every high-level architectural and technology choices guide to the correct direction really well"}~\hyperref[i42]{[Appendix 4.2]}.
+
+\subsubsection{Interest}
+All interviewees indicated interest in using the model in software development projects which reinforces the ideas of its overall usefulness. Usage notes highlighted some considerations for taking the model into an actual project, such as the need to adapt it to the processes of the organization implementing it and taking into account the project type. Interviewee 2 noted that the model might not be the best fit for quick prototyping: \textit{"This will be a bit heavier than some regular agile would be...This means that this will have a specific purpose for example if we want high-quality software...But if we make some fast MVPs or other things I, well I don't think that it is the purpose of this, this won't be fit for that."}~\hyperref[i21]{[Appendix 2.1]}. \textit{"I would like to try it. But every model is made for specific context so that won't work for us without some adaptations"}~\hyperref[i14]{[Appendix 1.4]}.
+
+\subsubsection{Conclusion}
+Based on the interview analysis the model is seen as useful and mostly includes relevant phases and roles and therefore no new phases or roles need to be added. 
+
+Metrics on the other hand need some revisions to include more complex metrics, however, existing metrics are good and relevant for producing these more complex metrics. These more complex metrics can be produced by measuring ratios of the current metrics. These include development velocity's ratio with development team costs, the ratio between all different backlogs, the ratio of energy consumption with usage costs, and development cost per backlog item among other possible combinations. More relevant metrics are likely to emerge when the model is used in practice. 
+
+Most interviewees indicated the need for fine-grained energy measurement in software but implementing it with currently available tools is not necessarily feasible in this kind of model.
+
+Measuring the social and individual aspects mentioned in two of the interviews is outside the scope of this thesis and becomes more important when measuring the impact of this model on an organizational level.
+
+The green coding expert proposed in the interviews is an organizational role and is therefore outside the scope of this thesis. It does highlight some adjustments that should be made when scaling the model beyond single teams and is a good topic for future research.
+
+There is also a clear interest in using the model in practice to enhance the sustainability of software and its development. Interviewees also noted that there are some adaptations that need to be made to the model before this to adapt it to different company sizes and development processes. This is often the case with all agile processes as no single implementation works for all organizations.
